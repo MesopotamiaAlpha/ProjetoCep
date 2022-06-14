@@ -10,7 +10,8 @@
         android:id="@+id/editCep"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="50dp"
+        android:autofillHints=""
         android:ems="10"
         android:hint="@string/digite_o_cep_para_pesquisar"
         android:inputType="textPostalAddress"
@@ -18,8 +19,7 @@
         android:textColorHint="#757575"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:autofillHints="" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/txtLogradouro"
@@ -85,6 +85,7 @@
         android:id="@+id/btnPesquisar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
         android:layout_marginBottom="15dp"
         android:text="@string/btnPesquisar"
         app:layout_constraintBottom_toBottomOf="parent"

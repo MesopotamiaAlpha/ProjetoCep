@@ -19,7 +19,6 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
-import org.w3c.dom.Text;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -27,17 +26,8 @@ import java.util.Map;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.http.GET;
-import retrofit2.http.Path;
 
 public class MainActivity extends AppCompatActivity {
-
-   /* public interface testeRetro {
-        @GET('https://viacep.com.br/ws/'+ campoCep +'/json/')
-        //Call<List<Repo>> listRepos(@Path("user") String user);
-    }
-*/
 
 
     @Override

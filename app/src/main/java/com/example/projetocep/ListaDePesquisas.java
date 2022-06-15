@@ -22,9 +22,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-
-
-
 public class ListaDePesquisas extends AppCompatActivity {
 
     @Override
@@ -36,15 +33,16 @@ public class ListaDePesquisas extends AppCompatActivity {
         RecyclerView recyclerResultado = findViewById(R.id.recycleResultado);
         Button btnVoltar = findViewById(R.id.btnVoltar);
 
+
         db.collection("historicoPesquisa")
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
-
+                        List<String> lst = new ArrayList();
                         if (task.isSuccessful()) {
                             //Nesta linha de baixo está sendo criado um hashmap para listar todos os dados
-                            List<String> lst = new ArrayList();
+
                             for (QueryDocumentSnapshot document : task.getResult()) {
                                 Log.d(TAG, document.getId() + " => " + document.getData());
                                 //aqui em baixo ele esta usando o for para pegar todos os datas e colocar dentro desta lista
@@ -52,6 +50,8 @@ public class ListaDePesquisas extends AppCompatActivity {
 
                             }
 
+                            //tentando fazer o recycler funcinar mas nao consigo,este dataset esta pegando do Customadapter linha 41
+                            //recyclerResultado.setAdapter(new CustomAdapter(this, lst));
 
                         } else {
                             Log.d(TAG, "Error getting documents: ", task.getException());

@@ -21,42 +21,44 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/txtLogradouro"
-        android:layout_width="0dp"
+
+    <!-- Inicio do card 1-->
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/card"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="@string/Logradouro"
-        app:layout_constraintBottom_toTopOf="@+id/txtBairro"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editCep"
-        app:layout_constraintVertical_bias="0.486" />
+        android:layout_margin="8dp"
+        android:layout_marginTop="130dp"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="8dp">
 
-    <TextView
-        android:id="@+id/txtBairro"
-        android:layout_width="0dp"
-        android:layout_height="19dp"
-        android:layout_marginTop="57dp"
-        android:layout_marginBottom="15dp"
-        android:text="@string/Bairro"
+    </com.google.android.material.card.MaterialCardView>
 
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtLogradouro" />
+    <!-- Final do card 1-->
 
-    <TextView
-        android:id="@+id/txtUf"
-        android:layout_width="0dp"
+    <!-- Inicio do card 2-->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/card2"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
-        android:text="@string/Uf"
-        app:layout_constraintBottom_toTopOf="@+id/txtComplemento"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtBairro"
-        app:layout_constraintVertical_bias="0.336" />
+        android:layout_margin="8dp">
+
+    </com.google.android.material.card.MaterialCardView>
+    <!-- Final do card 2-->
+
+    <!-- Inicio do card 3-->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/card3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp">
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <!-- Fim do card 3-->
+
+
 
     <TextView
         android:id="@+id/txtComplemento"
@@ -83,27 +85,122 @@
 
     <Button
         android:id="@+id/btnPesquisar"
+        style="@style/Widget.Material3.Button.Icon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginBottom="15dp"
+        android:layout_marginBottom="16dp"
         android:text="@string/btnPesquisar"
+        android:textColor="#0B0B0B"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.29"
+        app:layout_constraintHorizontal_bias="0.23"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/btnHistorico"
+        style="@style/Widget.Material3.Button.Icon"
         android:layout_width="137dp"
         android:layout_height="48dp"
         android:layout_marginStart="8dp"
-        android:layout_marginEnd="15dp"
+        android:layout_marginEnd="25dp"
         android:layout_marginBottom="15dp"
+        android:fontFamily="sans-serif"
         android:text="@string/bntHistorico"
+        android:textColor="#0B0B0B"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/btnPesquisar" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@+id/editCep"
+        tools:layout_editor_absoluteX="12dp">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/title"
+            android:textAppearance="?attr/textAppearanceTitleMedium"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/txtLogradouro"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/secondary_text"
+            android:textAppearance="?attr/textAppearanceBodyMedium"
+            android:textColor="?android:attr/textColorSecondary"
+            android:textSize="13sp" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        tools:layout_editor_absoluteX="-2dp">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/title2"
+            android:textAppearance="?attr/textAppearanceTitleMedium"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/txtUf"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/secondary_text2"
+            android:textAppearance="?attr/textAppearanceBodyMedium"
+            android:textColor="?android:attr/textColorSecondary"
+            android:textSize="13sp" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
+        tools:layout_editor_absoluteX="7dp">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/title2"
+            android:textAppearance="?attr/textAppearanceTitleMedium"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/txtBairro"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/secondary_text"
+            android:textAppearance="?attr/textAppearanceBodyMedium"
+            android:textColor="?android:attr/textColorSecondary"
+            android:textSize="13sp" />
+
+
+    </LinearLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -12,4 +12,9 @@
     <string name="Resultado">TextView</string>
     <string name="txtResultado2">TextView</string>
     <string name="element_text" />
+    <string name="title">Campo de logradouro</string>
+    <string name="secondary_text">Resultado do logradouro</string>
+    <string name="title2">Campo de Bairro</string>
+    <string name="secondary_text2">Resultado do Bairro</string>
+    <string name="title3">Campo de Uf</string>
 </resources>

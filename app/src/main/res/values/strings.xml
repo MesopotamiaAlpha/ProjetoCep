@@ -10,4 +10,6 @@
     <string name="btnVoltar">Voltar</string>
     <string name="textview">Campo Cidade</string>
     <string name="Resultado">TextView</string>
+    <string name="txtResultado2">TextView</string>
+    <string name="element_text" />
 </resources>

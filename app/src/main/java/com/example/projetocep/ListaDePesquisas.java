@@ -1,16 +1,17 @@
 package com.example.projetocep;
 
 import static android.content.ContentValues.TAG;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -18,11 +19,15 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 
-public class ListaDePesquisas extends AppCompatActivity {
 
+
+public class ListaDePesquisas extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +35,7 @@ public class ListaDePesquisas extends AppCompatActivity {
         setContentView(R.layout.activity_lista_de_pesquisas);
         FirebaseFirestore db = FirebaseFirestore.getInstance();
 
-        TextView txtResultado = findViewById(R.id.txtResultado);
+        RecyclerView recyclerResultado = findViewById(R.id.recycleResultado);
         Button btnVoltar = findViewById(R.id.btnVoltar);
 
         db.collection("historicoPesquisa")
@@ -40,19 +45,21 @@ public class ListaDePesquisas extends AppCompatActivity {
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
 
                         if (task.isSuccessful()) {
+                            //Nesta linha de baixo está sendo criado um hashmap para listar todos os dados
+                            List<String> lst = new ArrayList();
                             for (QueryDocumentSnapshot document : task.getResult()) {
                                 Log.d(TAG, document.getId() + " => " + document.getData());
-                                //Aqui estou tentando mapear todos os registros dentro do firestore e exibir em sequencia, mas nao estou estou conseguindo fazer como esta a baixo
-                                Map<String, Object> listaData = document.getData();
-                                txtResultado.setText(listaData.toString());
+                                //aqui em baixo ele esta usando o for para pegar todos os datas e colocar dentro desta lista
+                                lst.add(String.valueOf(document.getData()));
 
                             }
+
+
                         } else {
                             Log.d(TAG, "Error getting documents: ", task.getException());
                         }
                     }
                 });
-
 
 
 

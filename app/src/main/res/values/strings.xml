@@ -8,13 +8,17 @@
     <string name="btnPesquisar">Pesquisar</string>
     <string name="bntHistorico">Histórico</string>
     <string name="btnVoltar">Voltar</string>
-    <string name="textview">Campo Cidade</string>
+    <string name="tituloCidade">Campo Cidade</string>
+    <string name="resultadoCidade">Resultado do Cidade</string>
     <string name="Resultado">TextView</string>
     <string name="txtResultado2">TextView</string>
     <string name="element_text" />
-    <string name="title">Campo de logradouro</string>
-    <string name="secondary_text">Resultado do logradouro</string>
-    <string name="title2">Campo de Bairro</string>
-    <string name="secondary_text2">Resultado do Bairro</string>
-    <string name="title3">Campo de Uf</string>
+    <string name="title">Campo de Logradouro</string>
+    <string name="secondary_text">Resultado do Logradouro</string>
+    <string name="tituloEstado">Campo de Estado</string>
+    <string name="resultadoEstado">Resultado do Estado</string>
+    <string name="tituloBairro">Campo Bairro</string>
+    <string name="resultadoBairro">Resultado do Bairro</string>
+    <string name="tituloComplemento">Campo Complemento</string>
+    <string name="resultadoComplemento">Resultado do Complemento</string>
 </resources>

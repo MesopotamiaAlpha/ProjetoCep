@@ -11,9 +11,13 @@
         android:id="@+id/textField"
         android:layout_width="411dp"
         android:layout_height="54dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="70dp"
+        android:layout_marginEnd="8dp"
         android:hint="@string/pesquise_o_cep"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bottom_navigation"
         app:layout_constraintTop_toTopOf="parent">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -24,7 +28,8 @@
             android:background="@color/card"
             android:ems="10"
             android:inputType="textPostalAddress"
-            android:textColorHint="#FFE0B2" />
+            android:textColorHint="#FFE0B2"
+            app:layout_constraintTop_toBottomOf="@+id/bottom_navigation" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <!-- Inicio do card 1-->
@@ -289,4 +294,3 @@
         app:layout_constraintTop_toTopOf="parent"
         app:menu="@menu/bottom_navigation_menu" />
 </androidx.constraintlayout.widget.ConstraintLayout>
-

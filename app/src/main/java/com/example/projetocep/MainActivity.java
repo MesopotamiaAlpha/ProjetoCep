@@ -6,6 +6,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -16,6 +17,8 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.material.navigation.NavigationBarView;
+import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
@@ -38,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
 
 
-        EditText editCep = findViewById(R.id.editCep);
+        TextInputEditText editCep = findViewById(R.id.editCep);
         TextView txtLogradouro = findViewById(R.id.txtLogradouro);
         TextView txtBairro = findViewById(R.id.txtBairro);
         TextView txtComplemento = findViewById(R.id.txtComplemento);
@@ -48,13 +51,14 @@ public class MainActivity extends AppCompatActivity {
         Button btnHistorico = findViewById(R.id.btnHistorico);
 
 
-
         btnPesquisar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String campoCep = editCep.getText().toString();
 
                 Toast.makeText(MainActivity.this, "Clicado no botão de pesquisa", Toast.LENGTH_SHORT).show();
+
+
 
                 // Campo do firestore para guardar os dados
                 Map<String, Object> historico = new HashMap<>();
@@ -85,7 +89,11 @@ public class MainActivity extends AppCompatActivity {
                         txtBairro.setText("Nome do bairro: " +cep.getBairro());
                         txtComplemento.setText("Complemento: " +cep.getComplemento());
                         txtUf.setText("Estado: " +cep.getUf());
-                        txtLocalidade.setText("Cidade: " +cep.getLocalidade());
+                        txtLogradouro.setText("Cidade: " +cep.getLocalidade());
+                        txtBairro.setTextColor(Color.GREEN);
+                        txtComplemento.setTextColor(Color.GREEN);
+                        txtUf.setTextColor(Color.GREEN);
+                        txtLocalidade.setTextColor(Color.GREEN);
                     }
 
                     @Override
@@ -98,6 +106,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        
         btnHistorico.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -106,9 +115,5 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
-
-
-
-    }
+     }
 }

@@ -9,7 +9,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ListView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -30,8 +32,12 @@ public class ListaDePesquisas extends AppCompatActivity {
         setContentView(R.layout.activity_lista_de_pesquisas);
         FirebaseFirestore db = FirebaseFirestore.getInstance();
 
-        RecyclerView recyclerResultado = findViewById(R.id.recycleResultado);
         Button btnVoltar = findViewById(R.id.btnVoltar);
+        ListView listView = findViewById(R.id.listView);
+        List<String> lst = new ArrayList();
+        String[] dados = new String[] { "Cupcake", "Donut", "Eclair", "Froyo", "Gingerbread",
+                "Honeycomb", "Ice Cream Sandwich", "Jelly Bean",
+                "KitKat", "Lollipop", "Marshmallow", "Nougat" };
 
 
         db.collection("historicoPesquisa")
@@ -39,7 +45,7 @@ public class ListaDePesquisas extends AppCompatActivity {
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        List<String> lst = new ArrayList();
+
                         if (task.isSuccessful()) {
                             //Nesta linha de baixo está sendo criado um hashmap para listar todos os dados
 
@@ -47,12 +53,7 @@ public class ListaDePesquisas extends AppCompatActivity {
                                 Log.d(TAG, document.getId() + " => " + document.getData());
                                 //aqui em baixo ele esta usando o for para pegar todos os datas e colocar dentro desta lista
                                 lst.add(String.valueOf(document.getData()));
-
                             }
-
-                            //tentando fazer o recycler funcinar mas nao consigo,este dataset esta pegando do Customadapter linha 41
-                            //recyclerResultado.setAdapter(new CustomAdapter(this, lst));
-
                         } else {
                             Log.d(TAG, "Error getting documents: ", task.getException());
                         }
@@ -60,6 +61,8 @@ public class ListaDePesquisas extends AppCompatActivity {
                 });
 
 
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, lst);
+        listView.setAdapter(adapter);
 
         btnVoltar.setOnClickListener(new View.OnClickListener() {
             @Override

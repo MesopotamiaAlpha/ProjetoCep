@@ -3,7 +3,6 @@
     <string name="Logradouro">Campo de logradouro</string>
     <string name="Bairro">Campo bairro</string>
     <string name="Complemento">Campo de Complemento </string>
-    <string name="Uf">Campo de Uf</string>
     <string name="digite_o_cep_para_pesquisar">Digite o cep para pesquisar</string>
     <string name="btnPesquisar">Pesquisar</string>
     <string name="bntHistorico">Histórico</string>
@@ -21,4 +20,5 @@
     <string name="resultadoBairro">Resultado do Bairro</string>
     <string name="tituloComplemento">Campo Complemento</string>
     <string name="resultadoComplemento">Resultado do Complemento</string>
+    <string name="pesquise_o_cep">Pesquise o cep</string>
 </resources>

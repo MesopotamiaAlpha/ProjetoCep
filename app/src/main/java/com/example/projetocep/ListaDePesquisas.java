@@ -1,10 +1,11 @@
 package com.example.projetocep;
 
 import static android.content.ContentValues.TAG;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -13,6 +14,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 
+import com.example.projetocep.callback.OnResult;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -20,11 +22,11 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class ListaDePesquisas extends AppCompatActivity {
+
+    private OnResult onCompleteListener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,10 +37,11 @@ public class ListaDePesquisas extends AppCompatActivity {
         Button btnVoltar = findViewById(R.id.btnVoltar);
         ListView listView = findViewById(R.id.listView);
         List<String> lst = new ArrayList();
-        String[] dados = new String[] { "Cupcake", "Donut", "Eclair", "Froyo", "Gingerbread",
+        String[] dados = new String[]{"Cupcake", "Donut", "Eclair", "Froyo", "Gingerbread",
                 "Honeycomb", "Ice Cream Sandwich", "Jelly Bean",
-                "KitKat", "Lollipop", "Marshmallow", "Nougat" };
+                "KitKat", "Lollipop", "Marshmallow", "Nougat"};
 
+        Context ctx = this;
 
         db.collection("historicoPesquisa")
                 .get()
@@ -54,6 +57,10 @@ public class ListaDePesquisas extends AppCompatActivity {
                                 //aqui em baixo ele esta usando o for para pegar todos os datas e colocar dentro desta lista
                                 lst.add(String.valueOf(document.getData()));
                             }
+
+                            ArrayAdapter<String> adapter = new ArrayAdapter<String>(ctx, android.R.layout.simple_list_item_1, lst);
+                            listView.setAdapter(adapter);
+
                         } else {
                             Log.d(TAG, "Error getting documents: ", task.getException());
                         }
@@ -61,8 +68,6 @@ public class ListaDePesquisas extends AppCompatActivity {
                 });
 
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, lst);
-        listView.setAdapter(adapter);
 
         btnVoltar.setOnClickListener(new View.OnClickListener() {
             @Override

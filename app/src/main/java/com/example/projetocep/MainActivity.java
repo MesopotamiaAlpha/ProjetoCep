@@ -1,5 +1,5 @@
 package com.example.projetocep;
-
+//trocando para mysql
 import static android.content.ContentValues.TAG;
 
 import androidx.annotation.NonNull;
@@ -32,7 +32,6 @@ import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -42,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         TextInputEditText editCep = findViewById(R.id.editCep);
+
         TextView txtLogradouro = findViewById(R.id.txtLogradouro);
         TextView txtBairro = findViewById(R.id.txtBairro);
         TextView txtComplemento = findViewById(R.id.txtComplemento);
@@ -51,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
         Button btnHistorico = findViewById(R.id.btnHistorico);
 
 
+
         btnPesquisar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -58,29 +59,13 @@ public class MainActivity extends AppCompatActivity {
 
                 Toast.makeText(MainActivity.this, "Clicado no botão de pesquisa", Toast.LENGTH_SHORT).show();
 
-
-
-                // Campo do firestore para guardar os dados
                 Map<String, Object> historico = new HashMap<>();
                 historico.put("pesquisaCliente", campoCep);
-                db.collection("historicoPesquisa")
-                        .add(historico)
-                        .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-                            @Override
-                            public void onSuccess(DocumentReference documentReference) {
-                                Log.d(TAG, "DocumentSnapshot added with ID: " + documentReference.getId());
-                            }
-                        })
-                        .addOnFailureListener(new OnFailureListener() {
-                            @Override
-                            public void onFailure(@NonNull Exception e) {
-                                Log.w(TAG, "Error adding document", e);
-                            }
-                        });
+
 
                 //parte do get retrofit
-
                 Call<CEP> call = new RetrofitConfig().getCEPService().buscarCEP(editCep.getText().toString());
+
                 call.enqueue(new Callback<CEP>() {
                     @Override
                     public void onResponse(Call<CEP> call, Response<CEP> response) {
@@ -90,6 +75,7 @@ public class MainActivity extends AppCompatActivity {
                         txtComplemento.setText("Complemento: " +cep.getComplemento());
                         txtUf.setText("Estado: " +cep.getUf());
                         txtLogradouro.setText("Cidade: " +cep.getLocalidade());
+                        txtLogradouro.setTextColor(Color.GREEN);
                         txtBairro.setTextColor(Color.GREEN);
                         txtComplemento.setTextColor(Color.GREEN);
                         txtUf.setTextColor(Color.GREEN);
@@ -102,11 +88,10 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
 
-
             }
         });
 
-        
+
         btnHistorico.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -116,4 +101,8 @@ public class MainActivity extends AppCompatActivity {
         });
 
      }
+
+
+
 }
+

@@ -1,5 +1,9 @@
 package com.example.projetocep.callback;
 
-public interface OnCompleteCallback {
-    void onResult(OnCompleteCallback onCompleteListener);
+import com.google.android.gms.tasks.OnCompleteListener;
+
+import java.util.List;
+
+public interface OnResult {
+    void execute(List<String> lista);
 }

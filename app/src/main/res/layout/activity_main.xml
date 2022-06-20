@@ -9,12 +9,14 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textField"
-        android:layout_width="411dp"
+        android:layout_width="400dp"
         android:layout_height="54dp"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="15dp"
         android:layout_marginTop="70dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginEnd="15dp"
         android:hint="@string/pesquise_o_cep"
+        android:background="@color/barraPesquisa"
+        android:textColorHint="#63000000"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/bottom_navigation"
@@ -25,10 +27,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:autofillHints=""
-            android:background="@color/card"
+            android:background="@color/barraPesquisa"
             android:ems="10"
             android:inputType="textPostalAddress"
-            android:textColorHint="#FFE0B2"
+            android:textColorHint="#BBDEFB"
             app:layout_constraintTop_toBottomOf="@+id/bottom_navigation" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -39,20 +41,25 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        app:layout_constraintTop_toBottomOf="@+id/textField"
-        tools:layout_editor_absoluteX="8dp"
-        android:background="@color/card">
+        android:layout_marginEnd="8dp"
+        android:background="@color/card"
+        android:clickable="true"
+        android:focusable="true"
+        app:cardCornerRadius="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textField">
 
         <LinearLayout
             android:id="@+id/linearLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:background="@color/card"
             android:orientation="vertical"
             app:layout_constraintTop_toBottomOf="@+id/editCep"
-            tools:layout_editor_absoluteX="12dp"
-            android:background="@color/card">
+            tools:layout_editor_absoluteX="12dp">
 
 
             <TextView
@@ -60,7 +67,9 @@
                 android:layout_height="wrap_content"
                 android:text="@string/title"
                 android:textAppearance="?attr/textAppearanceTitleMedium"
-                android:textSize="20sp" />
+                android:textSize="20sp"
+                android:gravity="center"
+                android:layout_gravity="center"/>
 
             <TextView
                 android:id="@+id/txtLogradouro"
@@ -69,8 +78,10 @@
                 android:layout_marginTop="8dp"
                 android:text="@string/secondary_text"
                 android:textAppearance="?attr/textAppearanceBodyMedium"
-                android:textColor="#F3E5F5"
-                android:textSize="13sp" />
+                android:textColor="#4A148C"
+                android:textSize="13sp"
+                android:gravity="center"
+                android:layout_gravity="center"/>
 
 
         </LinearLayout>
@@ -86,19 +97,24 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
-        tools:layout_editor_absoluteX="8dp"
-        app:layout_constraintTop_toBottomOf="@+id/card"
-        tools:layout_editor_absoluteY="8dp">
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="8dp"
+        android:clickable="true"
+        android:focusable="true"
+        app:cardCornerRadius="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/card">
 
         <LinearLayout
             android:id="@+id/linearLayout2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:background="@color/card"
             android:orientation="vertical"
             app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-            tools:layout_editor_absoluteX="-2dp"
-            android:background="@color/card">
+            tools:layout_editor_absoluteX="-2dp">
 
 
             <TextView
@@ -106,7 +122,9 @@
                 android:layout_height="wrap_content"
                 android:text="@string/tituloEstado"
                 android:textAppearance="?attr/textAppearanceTitleMedium"
-                android:textSize="20sp" />
+                android:textSize="20sp"
+                android:gravity="center"
+                android:layout_gravity="center"/>
 
             <TextView
                 android:id="@+id/txtUf"
@@ -115,8 +133,10 @@
                 android:layout_marginTop="8dp"
                 android:text="@string/resultadoEstado"
                 android:textAppearance="?attr/textAppearanceBodyMedium"
-                android:textColor="#F3E5F5"
-                android:textSize="13sp" />
+                android:textColor="#4A148C"
+                android:textSize="13sp"
+                android:gravity="center"
+                android:layout_gravity="center"/>
 
 
         </LinearLayout>
@@ -128,17 +148,25 @@
         android:id="@+id/card3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/card2"
-        android:layout_margin="8dp">
+        android:layout_margin="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="8dp"
+        android:clickable="true"
+        android:focusable="true"
+        app:cardCornerRadius="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/card2">
+
         <LinearLayout
             android:id="@+id/linearLayout3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:background="@color/card"
             android:orientation="vertical"
             app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
-            tools:layout_editor_absoluteX="7dp"
-            android:background="@color/card">
+            tools:layout_editor_absoluteX="7dp">
 
 
             <TextView
@@ -146,7 +174,9 @@
                 android:layout_height="wrap_content"
                 android:text="@string/tituloBairro"
                 android:textAppearance="?attr/textAppearanceTitleMedium"
-                android:textSize="20sp" />
+                android:textSize="20sp"
+                android:gravity="center"
+                android:layout_gravity="center"/>
 
             <TextView
                 android:id="@+id/txtBairro"
@@ -155,8 +185,10 @@
                 android:layout_marginTop="8dp"
                 android:text="@string/resultadoBairro"
                 android:textAppearance="?attr/textAppearanceBodyMedium"
-                android:textColor="#F3E5F5"
-                android:textSize="13sp" />
+                android:textColor="#4A148C"
+                android:textSize="13sp"
+                android:gravity="center"
+                android:layout_gravity="center"/>
 
 
         </LinearLayout>
@@ -172,17 +204,24 @@
         android:id="@+id/card4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        app:cardCornerRadius="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/card3"
-        android:layout_margin="8dp">
+        android:clickable="true"
+        android:focusable="true">
+
         <LinearLayout
             android:id="@+id/linearLayout4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:background="@color/card"
             android:orientation="vertical"
             app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
-            tools:layout_editor_absoluteX="7dp"
-            android:background="@color/card">
+            tools:layout_editor_absoluteX="7dp">
 
 
             <TextView
@@ -190,7 +229,9 @@
                 android:layout_height="wrap_content"
                 android:text="@string/tituloComplemento"
                 android:textAppearance="?attr/textAppearanceTitleMedium"
-                android:textSize="20sp" />
+                android:textSize="20sp"
+                android:gravity="center"
+                android:layout_gravity="center"/>
 
             <TextView
                 android:id="@+id/txtComplemento"
@@ -199,8 +240,10 @@
                 android:layout_marginTop="8dp"
                 android:text="@string/resultadoComplemento"
                 android:textAppearance="?attr/textAppearanceBodyMedium"
-                android:textColor="#F3E5F5"
-                android:textSize="13sp" />
+                android:textColor="#4A148C"
+                android:textSize="13sp"
+                android:gravity="center"
+                android:layout_gravity="center"/>
 
 
         </LinearLayout>
@@ -216,17 +259,24 @@
         android:id="@+id/card5"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        app:cardCornerRadius="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/card4"
-        android:layout_margin="8dp">
+        android:clickable="true"
+        android:focusable="true">
+
         <LinearLayout
             android:id="@+id/linearLayout5"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:background="@color/card"
             android:orientation="vertical"
             app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
-            tools:layout_editor_absoluteX="7dp"
-            android:background="@color/card">
+            tools:layout_editor_absoluteX="7dp">
 
 
             <TextView
@@ -234,7 +284,9 @@
                 android:layout_height="wrap_content"
                 android:text="@string/tituloCidade"
                 android:textAppearance="?attr/textAppearanceTitleMedium"
-                android:textSize="20sp" />
+                android:textSize="20sp"
+                android:gravity="center"
+                android:layout_gravity="center"/>
 
             <TextView
                 android:id="@+id/txtLocalidade"
@@ -243,8 +295,10 @@
                 android:layout_marginTop="8dp"
                 android:text="@string/resultadoCidade"
                 android:textAppearance="?attr/textAppearanceBodyMedium"
-                android:textColor="#F3E5F5"
-                android:textSize="13sp" />
+                android:textColor="#4A148C"
+                android:textSize="13sp"
+                android:gravity="center"
+                android:layout_gravity="center"/>
 
 
         </LinearLayout>
@@ -292,5 +346,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:menu="@menu/bottom_navigation_menu" />
+        app:menu="@menu/bottom_navigation_menu"
+        android:background="@color/barraSuperior"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,9 +1,12 @@
 package com.example.projetocep;
+
+import com.example.projetocep.R;
 //trocando para mysql
 import static android.content.ContentValues.TAG;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Intent;
 import android.graphics.Color;
@@ -17,7 +20,10 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.material.bottomnavigation.BottomNavigationMenuView;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationBarView;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -49,8 +55,10 @@ public class MainActivity extends AppCompatActivity {
         TextView txtLocalidade = findViewById(R.id.txtLocalidade);
         Button btnPesquisar = findViewById(R.id.btnPesquisar);
         Button btnHistorico = findViewById(R.id.btnHistorico);
+        DrawerLayout menuLateral = findViewById(R.id.drawerLayout);
 
-
+       // BottomNavigationMenuView barraSuperior = findViewById(R.id.bottom_navigation);
+        FloatingActionButton editarCores = findViewById(R.id.btnEditarCores);
 
         btnPesquisar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -74,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
                         txtBairro.setText("Nome do bairro: " +cep.getBairro());
                         txtComplemento.setText("Complemento: " +cep.getComplemento());
                         txtUf.setText("Estado: " +cep.getUf());
-                        txtLogradouro.setText("Cidade: " +cep.getLocalidade());
+                        txtLocalidade.setText("Cidade: " +cep.getLocalidade());
                         txtLogradouro.setTextColor(Color.GREEN);
                         txtBairro.setTextColor(Color.GREEN);
                         txtComplemento.setTextColor(Color.GREEN);
@@ -90,7 +98,26 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+/* Nesta linha estou tentando colocar a barra lateral, mas o setNavigation não está funcionando
+        menuLateral.setNavigationOnClickListener {
+            drawerLayout.open();
+        }
 
+        menuLateral.setNavigationItemSelectedListener { menuItem ->
+                // Handle menu item selected
+                menuItem.isChecked = true
+            drawerLayout.close();
+            true
+        }
+*/
+        //Adicionando botão para mudar a cor do fundo
+        editarCores.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Snackbar.make(view, "Função para editar as cores", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
+            }
+        });
 
         btnHistorico.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -99,6 +126,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(telaHistorico);
             }
         });
+
 
      }
 

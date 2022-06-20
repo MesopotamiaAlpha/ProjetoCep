@@ -12,26 +12,27 @@
         android:layout_width="400dp"
         android:layout_height="54dp"
         android:layout_marginStart="15dp"
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="120dp"
         android:layout_marginEnd="15dp"
         android:hint="@string/pesquise_o_cep"
-        android:background="@color/barraPesquisa"
         android:textColorHint="#63000000"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/bottom_navigation"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:startIconDrawable="@drawable/pesquisa_icon">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/editCep"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:autofillHints=""
-            android:background="@color/barraPesquisa"
+            android:background="#6644E6"
             android:ems="10"
             android:inputType="textPostalAddress"
-            android:textColorHint="#BBDEFB"
-            app:layout_constraintTop_toBottomOf="@+id/bottom_navigation" />
+            app:layout_constraintTop_toBottomOf="@+id/bottom_navigation"
+            tools:ignore="TextContrastCheck" />
+
     </com.google.android.material.textfield.TextInputLayout>
 
     <!-- Inicio do card 1-->
@@ -39,10 +40,8 @@
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/card"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="85dp"
         android:layout_margin="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:background="@color/card"
         android:clickable="true"
@@ -50,42 +49,52 @@
         app:cardCornerRadius="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textField">
+        app:layout_constraintTop_toBottomOf="@+id/textField"
+        app:strokeColor="@color/black"
+        app:strokeWidth="1dp">
+
+        <ImageButton
+            android:layout_width="49dp"
+            android:layout_height="48dp"
+            android:layout_gravity="center|left"
+            android:clickable="true"
+            android:contentDescription="@string/icone_de_home"
+            android:focusable="true"
+            android:src="@drawable/home_icon"
+            app:backgroundTint="@android:color/transparent"
+            tools:ignore="DuplicateSpeakableTextCheck,ImageContrastCheck" />
 
         <LinearLayout
             android:id="@+id/linearLayout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="85dp"
             android:background="@color/card"
+            android:isScrollContainer="false"
             android:orientation="vertical"
-            app:layout_constraintTop_toBottomOf="@+id/editCep"
-            tools:layout_editor_absoluteX="12dp">
-
+            android:layout_gravity="center"
+            android:gravity="center"
+            app:layout_constraintTop_toBottomOf="@+id/editCep">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/title"
                 android:textAppearance="?attr/textAppearanceTitleMedium"
-                android:textSize="20sp"
-                android:gravity="center"
-                android:layout_gravity="center"/>
+                android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/txtLogradouro"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:layout_marginTop="8dp"
+                android:gravity="center"
                 android:text="@string/secondary_text"
                 android:textAppearance="?attr/textAppearanceBodyMedium"
                 android:textColor="#4A148C"
-                android:textSize="13sp"
-                android:gravity="center"
-                android:layout_gravity="center"/>
-
+                android:textSize="13sp" />
 
         </LinearLayout>
-
 
     </com.google.android.material.card.MaterialCardView>
 
@@ -105,14 +114,29 @@
         app:cardCornerRadius="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/card">
+        app:layout_constraintTop_toBottomOf="@+id/card"
+        app:strokeColor="@color/black"
+        app:strokeWidth="1dp">
+
+        <ImageButton
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_gravity="center|left"
+            android:clickable="true"
+            android:contentDescription="Icone de home"
+            android:focusable="true"
+            android:src="@drawable/estado_icon"
+            app:backgroundTint="@android:color/transparent"
+            tools:ignore="ImageContrastCheck" />
 
         <LinearLayout
             android:id="@+id/linearLayout2"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="85dp"
             android:background="@color/card"
             android:orientation="vertical"
+            android:layout_gravity="center"
+            android:gravity="center"
             app:layout_constraintTop_toBottomOf="@+id/linearLayout"
             tools:layout_editor_absoluteX="-2dp">
 
@@ -157,14 +181,29 @@
         app:cardCornerRadius="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/card2">
+        app:layout_constraintTop_toBottomOf="@+id/card2"
+        app:strokeColor="@color/black"
+        app:strokeWidth="1dp">
+
+        <ImageButton
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_gravity="center|left"
+            android:clickable="true"
+            android:contentDescription="Icone de home"
+            android:focusable="true"
+            android:src="@drawable/estado_icon"
+            app:backgroundTint="@android:color/transparent"
+            tools:ignore="ImageContrastCheck" />
 
         <LinearLayout
             android:id="@+id/linearLayout3"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="85dp"
             android:background="@color/card"
             android:orientation="vertical"
+            android:layout_gravity="center"
+            android:gravity="center"
             app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
             tools:layout_editor_absoluteX="7dp">
 
@@ -212,14 +251,29 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/card3"
         android:clickable="true"
-        android:focusable="true">
+        android:focusable="true"
+        app:strokeColor="@color/black"
+        app:strokeWidth="1dp">
+
+        <ImageButton
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_gravity="center|left"
+            android:clickable="true"
+            android:contentDescription="Icone de home"
+            android:focusable="true"
+            android:src="@drawable/estado_icon"
+            app:backgroundTint="@android:color/transparent"
+            tools:ignore="ImageContrastCheck" />
 
         <LinearLayout
             android:id="@+id/linearLayout4"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="85dp"
             android:background="@color/card"
             android:orientation="vertical"
+            android:layout_gravity="center"
+            android:gravity="center"
             app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
             tools:layout_editor_absoluteX="7dp">
 
@@ -267,16 +321,33 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/card4"
         android:clickable="true"
-        android:focusable="true">
+        android:focusable="true"
+        app:strokeColor="@color/black"
+        app:strokeWidth="1dp"
+        android:elevation="5dp">
+
+        <ImageButton
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_gravity="center|left"
+            android:clickable="true"
+            android:contentDescription="Icone de home"
+            android:focusable="true"
+            android:src="@drawable/cidade_icon"
+            app:backgroundTint="@android:color/transparent"
+            tools:ignore="ImageContrastCheck" />
 
         <LinearLayout
             android:id="@+id/linearLayout5"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="85dp"
             android:background="@color/card"
             android:orientation="vertical"
+            android:layout_gravity="center"
+            android:gravity="center"
             app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
-            tools:layout_editor_absoluteX="7dp">
+            tools:layout_editor_absoluteX="7dp"
+            >
 
 
             <TextView
@@ -313,7 +384,8 @@
         android:id="@+id/btnPesquisar"
         style="@style/Widget.Material3.Button.Icon"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+
+        android:layout_marginEnd="85dp"
         android:layout_marginBottom="16dp"
         android:text="@string/btnPesquisar"
         android:textColor="#0B0B0B"
@@ -321,15 +393,15 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.23"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_height="wrap_content" />
 
     <Button
         android:id="@+id/btnHistorico"
         style="@style/Widget.Material3.Button.Icon"
         android:layout_width="137dp"
         android:layout_height="48dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="25dp"
+        android:layout_marginEnd="85dp"
         android:layout_marginBottom="15dp"
         android:fontFamily="sans-serif"
         android:text="@string/bntHistorico"
@@ -339,13 +411,34 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/btnPesquisar" />
 
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottom_navigation"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:menu="@menu/bottom_navigation_menu"
-        android:background="@color/barraSuperior"/>
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottom_navigation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/barraSuperior"
+            app:menu="@menu/bottom_navigation_menu" />
+
+    </LinearLayout>
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btnEditarCores"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="16dp"
+        />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

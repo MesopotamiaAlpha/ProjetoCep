@@ -73,6 +73,7 @@ public class MainActivity extends AppCompatActivity {
 
                 //parte do get retrofit
                 Call<CEP> call = new RetrofitConfig().getCEPService().buscarCEP(editCep.getText().toString());
+                //Call<Axios> call = new RetrofitConfigAxiosPost().getCEPAxios().buscarCEP(editCep.getText().toString());
 
                 call.enqueue(new Callback<CEP>() {
                     @Override

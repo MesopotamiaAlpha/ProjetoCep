@@ -29,8 +29,9 @@
             android:autofillHints=""
             android:background="#6644E6"
             android:ems="10"
-            android:inputType="textPostalAddress"
+            android:inputType="number"
             app:layout_constraintTop_toBottomOf="@+id/bottom_navigation"
+            android:digits="0123456789"
             tools:ignore="TextContrastCheck" />
 
     </com.google.android.material.textfield.TextInputLayout>

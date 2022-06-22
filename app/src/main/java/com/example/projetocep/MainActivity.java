@@ -70,6 +70,7 @@ public class MainActivity extends AppCompatActivity {
                 call.enqueue(new Callback<CEP>() {
                     @Override
                     public void onResponse(Call<CEP> call, Response<CEP> response) {
+
                         CEP cep = response.body();
                         txtLogradouro.setText("Nome da rua: " + cep.getLogradouro());
                         txtBairro.setText("Nome do bairro: " +cep.getBairro());
@@ -95,7 +96,20 @@ public class MainActivity extends AppCompatActivity {
 
             //app esta crashando desta parte para baixo
             public void sendPost(CEP cep) {
-                AxiosService.postAxios(cep).enqueue(new Callback<Axios>() {
+                new RetrofitConfigAxiosPost().getAxiosService().postAxios(cep).enqueue(new Callback<Axios>() {
+                    @Override
+                    public void onResponse(Call<Axios> call, Response<Axios> response) {
+                        if (response.isSuccessful()) {
+                            Log.i("Passando aqui? ", "Deu success===========");
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<Axios> call, Throwable t) {
+                        Log.i("Passando no erro? ", "Deu erroo");
+                    }
+                });
+               /* AxiosService.postAxios(cep).enqueue(new Callback<Axios>() {
                     @Override
                     public void onResponse(Call<Axios> call, Response<Axios> response) {
 
@@ -109,7 +123,7 @@ public class MainActivity extends AppCompatActivity {
                     public void onFailure(Call<Axios> call, Throwable t) {
                         Log.e(TAG, "Unable to submit post to API.");
                     }
-                });
+                }); */
             }
 
 

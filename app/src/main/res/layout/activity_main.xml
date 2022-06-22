@@ -4,106 +4,441 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:background="@color/fundo">
 
-    <EditText
-        android:id="@+id/editCep"
-        android:layout_width="0dp"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textField"
+        android:layout_width="400dp"
+        android:layout_height="54dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="120dp"
+        android:layout_marginEnd="15dp"
+        android:hint="@string/pesquise_o_cep"
+        android:textColorHint="#63000000"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bottom_navigation"
+        app:layout_constraintTop_toTopOf="parent"
+        app:startIconDrawable="@drawable/pesquisa_icon">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editCep"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:autofillHints=""
+            android:background="#6644E6"
+            android:ems="10"
+            android:inputType="textPostalAddress"
+            app:layout_constraintTop_toBottomOf="@+id/bottom_navigation"
+            tools:ignore="TextContrastCheck" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!-- Inicio do card 1-->
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/card"
+        android:layout_width="match_parent"
+        android:layout_height="85dp"
+        android:layout_margin="8dp"
+        android:layout_marginEnd="8dp"
+        android:background="@color/card"
+        android:clickable="true"
+        android:focusable="true"
+        app:cardCornerRadius="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textField"
+        app:strokeColor="@color/black"
+        app:strokeWidth="1dp">
+
+        <ImageButton
+            android:layout_width="49dp"
+            android:layout_height="48dp"
+            android:layout_gravity="center|left"
+            android:clickable="true"
+            android:contentDescription="@string/icone_de_home"
+            android:focusable="true"
+            android:src="@drawable/home_icon"
+            app:backgroundTint="@android:color/transparent"
+            tools:ignore="DuplicateSpeakableTextCheck,ImageContrastCheck" />
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="85dp"
+            android:background="@color/card"
+            android:isScrollContainer="false"
+            android:orientation="vertical"
+            android:layout_gravity="center"
+            android:gravity="center"
+            app:layout_constraintTop_toBottomOf="@+id/editCep">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/title"
+                android:textAppearance="?attr/textAppearanceTitleMedium"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/txtLogradouro"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:text="@string/secondary_text"
+                android:textAppearance="?attr/textAppearanceBodyMedium"
+                android:textColor="#4A148C"
+                android:textSize="13sp" />
+
+        </LinearLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <!-- Final do card 1-->
+
+    <!-- Inicio do card 2-->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/card2"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="50dp"
-        android:autofillHints=""
-        android:ems="10"
-        android:hint="@string/digite_o_cep_para_pesquisar"
-        android:inputType="textPostalAddress"
-        android:minHeight="48dp"
-        android:textColorHint="#757575"
+        android:layout_marginEnd="8dp"
+        android:clickable="true"
+        android:focusable="true"
+        app:cardCornerRadius="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/card"
+        app:strokeColor="@color/black"
+        app:strokeWidth="1dp">
 
-    <TextView
-        android:id="@+id/txtLogradouro"
-        android:layout_width="0dp"
+        <ImageButton
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_gravity="center|left"
+            android:clickable="true"
+            android:contentDescription="Icone de home"
+            android:focusable="true"
+            android:src="@drawable/estado_icon"
+            app:backgroundTint="@android:color/transparent"
+            tools:ignore="ImageContrastCheck" />
+
+        <LinearLayout
+            android:id="@+id/linearLayout2"
+            android:layout_width="match_parent"
+            android:layout_height="85dp"
+            android:background="@color/card"
+            android:orientation="vertical"
+            android:layout_gravity="center"
+            android:gravity="center"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+            tools:layout_editor_absoluteX="-2dp">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/tituloEstado"
+                android:textAppearance="?attr/textAppearanceTitleMedium"
+                android:textSize="20sp"
+                android:gravity="center"
+                android:layout_gravity="center"/>
+
+            <TextView
+                android:id="@+id/txtUf"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/resultadoEstado"
+                android:textAppearance="?attr/textAppearanceBodyMedium"
+                android:textColor="#4A148C"
+                android:textSize="13sp"
+                android:gravity="center"
+                android:layout_gravity="center"/>
+
+
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+    <!-- Final do card 2-->
+
+    <!-- Inicio do card 3-->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/card3"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="@string/Logradouro"
-        app:layout_constraintBottom_toTopOf="@+id/txtBairro"
+        android:layout_margin="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="8dp"
+        android:clickable="true"
+        android:focusable="true"
+        app:cardCornerRadius="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editCep"
-        app:layout_constraintVertical_bias="0.486" />
+        app:layout_constraintTop_toBottomOf="@+id/card2"
+        app:strokeColor="@color/black"
+        app:strokeWidth="1dp">
 
-    <TextView
-        android:id="@+id/txtBairro"
-        android:layout_width="0dp"
-        android:layout_height="19dp"
-        android:layout_marginTop="57dp"
-        android:layout_marginBottom="15dp"
-        android:text="@string/Bairro"
+        <ImageButton
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_gravity="center|left"
+            android:clickable="true"
+            android:contentDescription="Icone de home"
+            android:focusable="true"
+            android:src="@drawable/estado_icon"
+            app:backgroundTint="@android:color/transparent"
+            tools:ignore="ImageContrastCheck" />
 
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtLogradouro" />
+        <LinearLayout
+            android:id="@+id/linearLayout3"
+            android:layout_width="match_parent"
+            android:layout_height="85dp"
+            android:background="@color/card"
+            android:orientation="vertical"
+            android:layout_gravity="center"
+            android:gravity="center"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
+            tools:layout_editor_absoluteX="7dp">
 
-    <TextView
-        android:id="@+id/txtUf"
-        android:layout_width="0dp"
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/tituloBairro"
+                android:textAppearance="?attr/textAppearanceTitleMedium"
+                android:textSize="20sp"
+                android:gravity="center"
+                android:layout_gravity="center"/>
+
+            <TextView
+                android:id="@+id/txtBairro"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/resultadoBairro"
+                android:textAppearance="?attr/textAppearanceBodyMedium"
+                android:textColor="#4A148C"
+                android:textSize="13sp"
+                android:gravity="center"
+                android:layout_gravity="center"/>
+
+
+        </LinearLayout>
+
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <!-- Fim do card 3-->
+
+
+    <!-- Inicio do card 4-->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/card4"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
-        android:text="@string/Uf"
-        app:layout_constraintBottom_toTopOf="@+id/txtComplemento"
+        android:layout_margin="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        app:cardCornerRadius="20dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtBairro"
-        app:layout_constraintVertical_bias="0.336" />
+        app:layout_constraintTop_toBottomOf="@+id/card3"
+        android:clickable="true"
+        android:focusable="true"
+        app:strokeColor="@color/black"
+        app:strokeWidth="1dp">
 
-    <TextView
-        android:id="@+id/txtComplemento"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="228dp"
-        android:text="@string/Complemento"
-        app:layout_constraintBottom_toTopOf="@+id/btnPesquisar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent" />
+        <ImageButton
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_gravity="center|left"
+            android:clickable="true"
+            android:contentDescription="Icone de home"
+            android:focusable="true"
+            android:src="@drawable/estado_icon"
+            app:backgroundTint="@android:color/transparent"
+            tools:ignore="ImageContrastCheck" />
 
-    <TextView
-        android:id="@+id/txtLocalidade"
-        android:layout_width="0dp"
+        <LinearLayout
+            android:id="@+id/linearLayout4"
+            android:layout_width="match_parent"
+            android:layout_height="85dp"
+            android:background="@color/card"
+            android:orientation="vertical"
+            android:layout_gravity="center"
+            android:gravity="center"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
+            tools:layout_editor_absoluteX="7dp">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/tituloComplemento"
+                android:textAppearance="?attr/textAppearanceTitleMedium"
+                android:textSize="20sp"
+                android:gravity="center"
+                android:layout_gravity="center"/>
+
+            <TextView
+                android:id="@+id/txtComplemento"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/resultadoComplemento"
+                android:textAppearance="?attr/textAppearanceBodyMedium"
+                android:textColor="#4A148C"
+                android:textSize="13sp"
+                android:gravity="center"
+                android:layout_gravity="center"/>
+
+
+        </LinearLayout>
+
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <!-- Fim do card 4-->
+
+
+    <!-- Inicio do card 5-->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/card5"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/textview"
-        app:layout_constraintBottom_toTopOf="@+id/btnPesquisar"
+        android:layout_margin="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        app:cardCornerRadius="20dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtComplemento"
-        app:layout_constraintVertical_bias="0.314" />
+        app:layout_constraintTop_toBottomOf="@+id/card4"
+        android:clickable="true"
+        android:focusable="true"
+        app:strokeColor="@color/black"
+        app:strokeWidth="1dp"
+        android:elevation="5dp">
+
+        <ImageButton
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_gravity="center|left"
+            android:clickable="true"
+            android:contentDescription="Icone de home"
+            android:focusable="true"
+            android:src="@drawable/cidade_icon"
+            app:backgroundTint="@android:color/transparent"
+            tools:ignore="ImageContrastCheck" />
+
+        <LinearLayout
+            android:id="@+id/linearLayout5"
+            android:layout_width="match_parent"
+            android:layout_height="85dp"
+            android:background="@color/card"
+            android:orientation="vertical"
+            android:layout_gravity="center"
+            android:gravity="center"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
+            tools:layout_editor_absoluteX="7dp"
+            >
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/tituloCidade"
+                android:textAppearance="?attr/textAppearanceTitleMedium"
+                android:textSize="20sp"
+                android:gravity="center"
+                android:layout_gravity="center"/>
+
+            <TextView
+                android:id="@+id/txtLocalidade"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/resultadoCidade"
+                android:textAppearance="?attr/textAppearanceBodyMedium"
+                android:textColor="#4A148C"
+                android:textSize="13sp"
+                android:gravity="center"
+                android:layout_gravity="center"/>
+
+
+        </LinearLayout>
+
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <!-- Fim do card 5-->
+
 
     <Button
         android:id="@+id/btnPesquisar"
+        style="@style/Widget.Material3.Button.Icon"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginBottom="15dp"
+
+        android:layout_marginEnd="85dp"
+        android:layout_marginBottom="16dp"
         android:text="@string/btnPesquisar"
+        android:textColor="#0B0B0B"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.29"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.23"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_height="wrap_content" />
 
     <Button
         android:id="@+id/btnHistorico"
+        style="@style/Widget.Material3.Button.Icon"
         android:layout_width="137dp"
         android:layout_height="48dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="15dp"
+        android:layout_marginEnd="85dp"
         android:layout_marginBottom="15dp"
+        android:fontFamily="sans-serif"
         android:text="@string/bntHistorico"
+        android:textColor="#0B0B0B"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/btnPesquisar" />
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottom_navigation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/barraSuperior"
+            app:menu="@menu/bottom_navigation_menu" />
+
+    </LinearLayout>
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btnEditarCores"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="16dp"
+        />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,10 +1,8 @@
 package com.example.projetocep;
 
-import com.example.projetocep.R;
 //trocando para mysql
 import static android.content.ContentValues.TAG;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
 
@@ -14,18 +12,13 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.material.bottomnavigation.BottomNavigationMenuView;
+
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.navigation.NavigationBarView;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputEditText;
-import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 
@@ -73,7 +66,6 @@ public class MainActivity extends AppCompatActivity {
 
                 //parte do get retrofit
                 Call<CEP> call = new RetrofitConfig().getCEPService().buscarCEP(editCep.getText().toString());
-                //Call<Axios> call = new RetrofitConfigAxiosPost().getCEPAxios().buscarCEP(editCep.getText().toString());
 
                 call.enqueue(new Callback<CEP>() {
                     @Override
@@ -89,6 +81,8 @@ public class MainActivity extends AppCompatActivity {
                         txtComplemento.setTextColor(Color.GREEN);
                         txtUf.setTextColor(Color.GREEN);
                         txtLocalidade.setTextColor(Color.GREEN);
+                        //chamando o post do retrofit
+                        sendPost(cep);
                     }
 
                     @Override
@@ -98,6 +92,27 @@ public class MainActivity extends AppCompatActivity {
                 });
 
             }
+
+            //app esta crashando desta parte para baixo
+            public void sendPost(CEP cep) {
+                AxiosService.postAxios(cep).enqueue(new Callback<Axios>() {
+                    @Override
+                    public void onResponse(Call<Axios> call, Response<Axios> response) {
+
+                        if(response.isSuccessful()) {
+
+                            Log.i(TAG, "post submitted to API." + response.body().toString());
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<Axios> call, Throwable t) {
+                        Log.e(TAG, "Unable to submit post to API.");
+                    }
+                });
+            }
+
+
         });
 /* Nesta linha estou tentando colocar a barra lateral, mas o setNavigation não está funcionando
         menuLateral.setNavigationOnClickListener {

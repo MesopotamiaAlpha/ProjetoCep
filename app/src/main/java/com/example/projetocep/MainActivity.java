@@ -93,7 +93,6 @@ public class MainActivity extends AppCompatActivity {
                 });
 
             }
-
             //app esta crashando desta parte para baixo
             public void sendPost(CEP cep) {
                 new RetrofitConfigAxiosPost().getAxiosService().postAxios(cep).enqueue(new Callback<Axios>() {

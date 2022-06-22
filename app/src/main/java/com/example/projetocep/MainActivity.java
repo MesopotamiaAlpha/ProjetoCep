@@ -1,24 +1,22 @@
 package com.example.projetocep;
 
-//trocando para mysql
 import static android.content.ContentValues.TAG;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
-import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 
@@ -31,6 +29,7 @@ import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -39,8 +38,7 @@ public class MainActivity extends AppCompatActivity {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
 
 
-        TextInputEditText editCep = findViewById(R.id.editCep);
-
+        EditText editCep = findViewById(R.id.editCep);
         TextView txtLogradouro = findViewById(R.id.txtLogradouro);
         TextView txtBairro = findViewById(R.id.txtBairro);
         TextView txtComplemento = findViewById(R.id.txtComplemento);
@@ -48,10 +46,8 @@ public class MainActivity extends AppCompatActivity {
         TextView txtLocalidade = findViewById(R.id.txtLocalidade);
         Button btnPesquisar = findViewById(R.id.btnPesquisar);
         Button btnHistorico = findViewById(R.id.btnHistorico);
-        DrawerLayout menuLateral = findViewById(R.id.drawerLayout);
 
-       // BottomNavigationMenuView barraSuperior = findViewById(R.id.bottom_navigation);
-        FloatingActionButton editarCores = findViewById(R.id.btnEditarCores);
+
 
         btnPesquisar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -60,13 +56,27 @@ public class MainActivity extends AppCompatActivity {
 
                 Toast.makeText(MainActivity.this, "Clicado no botão de pesquisa", Toast.LENGTH_SHORT).show();
 
+                // Campo do firestore para guardar os dados
                 Map<String, Object> historico = new HashMap<>();
                 historico.put("pesquisaCliente", campoCep);
-
+                db.collection("historicoPesquisa")
+                        .add(historico)
+                        .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                            @Override
+                            public void onSuccess(DocumentReference documentReference) {
+                                Log.d(TAG, "DocumentSnapshot added with ID: " + documentReference.getId());
+                            }
+                        })
+                        .addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                Log.w(TAG, "Error adding document", e);
+                            }
+                        });
 
                 //parte do get retrofit
-                Call<CEP> call = new RetrofitConfig().getCEPService().buscarCEP(editCep.getText().toString());
 
+                Call<CEP> call = new RetrofitConfig().getCEPService().buscarCEP(editCep.getText().toString());
                 call.enqueue(new Callback<CEP>() {
                     @Override
                     public void onResponse(Call<CEP> call, Response<CEP> response) {
@@ -76,13 +86,6 @@ public class MainActivity extends AppCompatActivity {
                         txtComplemento.setText("Complemento: " +cep.getComplemento());
                         txtUf.setText("Estado: " +cep.getUf());
                         txtLocalidade.setText("Cidade: " +cep.getLocalidade());
-                        txtLogradouro.setTextColor(Color.GREEN);
-                        txtBairro.setTextColor(Color.GREEN);
-                        txtComplemento.setTextColor(Color.GREEN);
-                        txtUf.setTextColor(Color.GREEN);
-                        txtLocalidade.setTextColor(Color.GREEN);
-                        //chamando o post do retrofit
-                        sendPost(cep);
                     }
 
                     @Override
@@ -91,47 +94,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
 
-            }
 
-            //app esta crashando desta parte para baixo
-            public void sendPost(CEP cep) {
-                AxiosService.postAxios(cep).enqueue(new Callback<Axios>() {
-                    @Override
-                    public void onResponse(Call<Axios> call, Response<Axios> response) {
-
-                        if(response.isSuccessful()) {
-
-                            Log.i(TAG, "post submitted to API." + response.body().toString());
-                        }
-                    }
-
-                    @Override
-                    public void onFailure(Call<Axios> call, Throwable t) {
-                        Log.e(TAG, "Unable to submit post to API.");
-                    }
-                });
-            }
-
-
-        });
-/* Nesta linha estou tentando colocar a barra lateral, mas o setNavigation não está funcionando
-        menuLateral.setNavigationOnClickListener {
-            drawerLayout.open();
-        }
-
-        menuLateral.setNavigationItemSelectedListener { menuItem ->
-                // Handle menu item selected
-                menuItem.isChecked = true
-            drawerLayout.close();
-            true
-        }
-*/
-        //Adicionando botão para mudar a cor do fundo
-        editarCores.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Função para editar as cores", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
             }
         });
 
@@ -144,9 +107,8 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-     }
 
 
 
+    }
 }
-
